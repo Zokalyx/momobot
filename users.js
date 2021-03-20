@@ -35,7 +35,7 @@ const Users = {
     
             let special = false; // used to know if user has all the collection
             if (actualUserCollection[coll].length == Cards.cardsInCommand(cards[coll])) { // double the passive income if you have the whole collection
-                miniPassive *= config.colRewardMultiplier;
+                miniPassive *= Cards.cardsInCommand(cards[coll])/config.colRewardMultiplier;
                 special = true;
             }
             passiveIncome += miniPassive;

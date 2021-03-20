@@ -173,7 +173,7 @@ const MF = {
 **Tamaño del roll caché:** \`${config.rollCacheSize}\`
 **Recargas por día:** Rolls: \`${config.rates.rolls}\` - Compras: \`${config.rates.buys}\` - Reacciones: \`${config.rates.reacts}\` - Inversiones: \`${config.rates.invs}\`
 **Máximos:** Rolls: \`${config.ratesMax.rolls}\` - Compras: \`${config.ratesMax.buys}\` - Reacciones: \`${config.ratesMax.reacts}\` - Inversiones: \`${config.ratesMax.invs}\`
-**Multiplicador de ingresos pasivos por pack completo:** x\`${config.colRewardMultiplier}\`
+**Multiplicador de ingresos pasivos por pack completo:** Tamaño del pack/\`${config.colRewardMultiplier}\`
 **Ingresos pasivos por carta:** x\`1/${config.passiveIncomeDivider}\`
 **Recompensa por reaccionar (dueño):** Valor de carta x\`${config.reactMultiplier}\`
 **Recompensa por reaccionar (el que reacciona):** Recompensa de dueño x\`${config.reactorReward}\`
