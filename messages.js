@@ -94,7 +94,7 @@ const Texts = {
 
         new: [
             "**__Comandos nuevos:__**",
-            
+            "`wait` muestra los minutos restantes para obtener más acciones"
         ],
 
         cmd: [
