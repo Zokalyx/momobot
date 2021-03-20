@@ -73,7 +73,7 @@ const Cards = {
         }
     
         let ans = new Discord.MessageEmbed()
-            .setColor(Aux.toRgb(actualCard[3], this.maxValue))
+            .setColor(Aux.toRgb(actualCard[3]*actualCard[4], this.maxValue))
             .setTitle(Aux.capFirst(commandName) + " #" + (cardIndex + 1) + extraName)
             .addFields(
                 { name: "Dueño", value: ownerNickname, inline: true },
