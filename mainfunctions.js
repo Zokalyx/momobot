@@ -123,7 +123,7 @@ const MF = {
 
 //------------------------------------------------------COLLECTION----------------------------------------------------
     async collection ( argobj ) {
-        await Users.idCorrection( argobj, false, async function( {cards, config, users, id, nickname} )
+        await Users.idCorrection( argobj, false, async function( {cards, config, users, id, nickname, channel} )
             {
                     let results = await Users.collectionInfo(id, users, cards, config);
 
@@ -1110,7 +1110,9 @@ async rename ( {act, args, cards, channel, cache, guild, id, users, config} ) {
 
                             if (id != owner) { channel.send("Esa carta no es tuya") } else {
 
-                                    
+                                    cArr[2] = "";
+                                    users[id]["col"][args[2]-1] = false
+                                    users[id]["bal"][0] += price/2
                                     channel.send(`${nickname} vendió ${cardName} por $${price/2}!`);
                                     channel.send(Cards.getCardEmbed(args[2] - 1, cards[args[1]], args[1], "-"));
 
