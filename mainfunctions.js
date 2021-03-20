@@ -1163,6 +1163,21 @@ async rename ( {act, args, cards, channel, cache, guild, id, users, config} ) {
     },
 
 
+//------------------------------------------------------WAIT---------------------------------------------------------
+    async wait ( {users, config, id, cards} ) {
+        let ans = ["**Tiempos restantes:**"];
+        for (key in users) {
+            if (key == "name" || key == "col" || key == "" || key == "bal") {
+                continue
+            }
+            let value = Users.updateData(id, key, users, config, cards);
+            let decimalRemaining = 1 - (value - Math.floor(value));
+            let timeLeft = Math.round(decimalRemaining/config.rates[key]*24*60);
+            ans.push(`${timeLeft} mins para más ${key}`);
+        }
+    }
+
+
 };
 
 
