@@ -1111,7 +1111,7 @@ async rename ( {act, args, cards, channel, cache, guild, id, users, config} ) {
                             if (id != owner) { channel.send("Esa carta no es tuya") } else {
 
                                     cArr[2] = "";
-                                    users[id]["col"][args[2]-1] = false
+                                    users[id]["col"][args[1]][args[2]-1] = false
                                     users[id]["bal"][0] += price/2
                                     channel.send(`${nickname} vendió ${cardName} por $${price/2}!`);
                                     channel.send(Cards.getCardEmbed(args[2] - 1, cards[args[1]], args[1], "-"));
