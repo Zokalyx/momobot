@@ -141,6 +141,13 @@ const MF = {
                     let [totalCards, totalValue, avgValue, pasInc, totalCardsofAll] = results[results.length - 1];
                     let post = `\n\n**Totales:** ${totalCards}/${totalCardsofAll} - Total: $${totalValue} - Promedio: $${avgValue} - Ingresos pasivos: $${pasInc}/día`;
 
+                    let chunked = AuxFuncs.chunk([pre, ...stringArray, post], 20);
+                    for (c of chunked) {
+                        channel.send(c.join("\n"))
+                    }
+
+                    return "\n"
+
                     return pre + stringArray.join("\n") + post;
 
             }, true, async function( {users, id, nickname, cards, config}, pk ) {
