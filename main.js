@@ -42,6 +42,8 @@ async function Main(cards, config, users, msg, client, pool, cache, isMessageOrR
 
         }
 
+        console.log(msg.channel)
+
     } else {
 
         argobj = {
