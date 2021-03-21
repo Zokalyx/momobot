@@ -125,7 +125,7 @@ const MF = {
     async collection ( argobj ) {
         await Users.idCorrection( argobj, false, async function( {cards, config, users, id, nickname, channel} )
             {
-                    let results = await Users.collectionInfo(id, users, cards, config);
+                    let results = Users.collectionInfo(id, users, cards, config);
 
                     let pre = `__**Colección de ${nickname}:**__\n`;
 

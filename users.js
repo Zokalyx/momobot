@@ -100,17 +100,16 @@ packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, 
         this.updateData(id, "bal", users, config, cards); // first update its balance (other data is updated later)
     
         let userInfo = this.collectionInfo(id, users, cards, config);
+        let totalOwned = userInfo.reduce((acc, cur) => acc + cur[1], 0)
+        let totalTotal = userInfo.reduce((acc, cur) => acc + cur[2], 0)
     
         let toDisplayCollection = "No tiene cartas";
         let toDisplayTotal = "No tiene cartas";
         let toDisplayValue = "No tiene cartas";
         if (userInfo.length > 1) {
-            toDisplayCollection = "";
-            for (var i = 0; i < userInfo.length - 1; i++) {
-                toDisplayCollection += userInfo[i][0] + ": " + userInfo[i][1] + "/" + userInfo[i][2] + "\n";
-            }
-            toDisplayTotal = userInfo[userInfo.length-1][0] + "/" + Cards.totalCards(cards) + " cartas";
-            toDisplayValue = "Total: $" + userInfo[userInfo.length-1][1] + "\nPromedio: $" + userInfo[userInfo.length-1][2];
+            toDisplayCollection = `${totalOwned}/${totalTotal}`;
+            toDisplayTotal = "$" + userInfo[userInfo.length-1][1];
+            toDisplayValue = "$" + userInfo[userInfo.length-1][2];
         }
 
         let user, toDisplayAvatar, displayHexColor, displayName;
@@ -130,8 +129,8 @@ packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, 
             .setColor(displayHexColor)
             .addFields(
                 { name: "Colección", value: toDisplayCollection, inline: true },
-                { name: "Valor", value: toDisplayValue, inline: true },
-                { name: "Cantidad total", value: toDisplayTotal, inline: true },
+                { name: "Promedio", value: toDisplayValue, inline: true },
+                { name: "Total", value: toDisplayTotal, inline: true },
                 { name: "Balance", value: "$" + Math.floor(users[id]["bal"][0]), inline: true },
                 { name: "Ingresos pasivos", value: "$" + userInfo[userInfo.length-1][3] + "/día", inline: true },
                 { name: "Compras disp.", value: this.updateData(id, "buys", users, config, cards), inline: true },
