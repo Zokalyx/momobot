@@ -99,7 +99,7 @@ async function Main(cards, config, users, msg, client, pool, cache, isMessageOrR
 
         if (args[0].startsWith(prefix) && main.length > 0) { // only do something when the message starts with a prefix and main exists
 
-            if (main in MF && main !== "custom") { // only main commands
+            if (main.toLowerCase() in MF && main !== "custom") { // only main commands
 
                 MF[main.toLowerCase()](argobj);
 
