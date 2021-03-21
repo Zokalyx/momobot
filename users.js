@@ -55,7 +55,7 @@ const Users = {
         return ans;
     },
 
-    packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, specificUser = false) { // for collection pack
+packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, specificUser = false) { // for collection pack
         let ca = cards[pack];
         if (!specificUser) {
 

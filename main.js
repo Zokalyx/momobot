@@ -101,7 +101,7 @@ async function Main(cards, config, users, msg, client, pool, cache, isMessageOrR
 
             if (main in MF && main !== "custom") { // only main commands
 
-                MF[main](argobj);
+                MF[main.toLowerCase()](argobj);
 
             } else if (main in cards && main !== "name") { // custom commands
 
