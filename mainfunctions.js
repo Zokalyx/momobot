@@ -243,11 +243,9 @@ const MF = {
                             let sliceAt = args[2].search(img)
                             toSave = args[2].slice(0, sliceAt + img.length)
                             if (img === ".gif") {
-                                cards[main].push([args.splice(2).join(" "), "gif", "", 0, 1, 0, ""]);
                                 type = "gif";
                                 channel.send("Gif agregado al comando `" + main + "`")
                             } else {
-                                cards[main].push([args.splice(2).join(" "), "img", "", 0, 1, 0, ""]);
                                 type = "img"
                                 channel.send("Imagen agregada al comando `" + main + "`")
                             }
