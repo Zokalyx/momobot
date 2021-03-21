@@ -39,6 +39,7 @@ const Texts = {
 
             "`bal (<usuario>)` muestra el balance de un usuario (default = el tuyo)",
             "`rolls`, `reacts`, `buys` y `invs` `(<usuario>)` muestran las acciones disponibles del usuario (default = las tuyas)",
+            "`wait` muestra los minutos restantes para obtener más acciones",
             "`give <plata> <usuario>` le da plata a un usuario",
 
             "`id` muestra tu ID y los nombres asociados al mismo",
