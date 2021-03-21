@@ -100,14 +100,12 @@ packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, 
         this.updateData(id, "bal", users, config, cards); // first update its balance (other data is updated later)
     
         let userInfo = this.collectionInfo(id, users, cards, config);
-        let totalOwned = userInfo.reduce((acc, cur) => acc + cur[1], 0)
-        let totalTotal = userInfo.reduce((acc, cur) => acc + cur[2], 0)
     
         let toDisplayCollection = "No tiene cartas";
         let toDisplayTotal = "No tiene cartas";
         let toDisplayValue = "No tiene cartas";
         if (userInfo.length > 1) {
-            toDisplayCollection = `${totalOwned}/${totalTotal}`;
+            toDisplayCollection = `${userInfo[userInfo.length-1][0]}/${userInfo[userInfo.length-1][4]}`;
             toDisplayTotal = "$" + userInfo[userInfo.length-1][1];
             toDisplayValue = "$" + userInfo[userInfo.length-1][2];
         }
