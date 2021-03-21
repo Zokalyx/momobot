@@ -231,49 +231,66 @@ const MF = {
 
             } else if (args[1] == "+") { // add
 
+                
                 if (act > 2) {
 
-                    if (args[2].includes("tenor") && args[2].includes("gif") && !args[2].endsWith(".gif")) { 
+                    let imageTypes = [".png", ".jpg", ".jpeg", ".gif"]
+                    let type = ""
+                    let toSave;
+                    let wasFound = false;
+                    for (const img of imageTypes) {
+                        if (args[2].includes(img)) {
+                            let sliceAt = args[2].search(img)
+                            toSave = args[2].slice(0, sliceAt + img.length)
+                            if (img === ".gif") {
+                                cards[main].push([args.splice(2).join(" "), "gif", "", 0, 1, 0, ""]);
+                                type = "gif";
+                                channel.send("Gif agregado al comando `" + main + "`")
+                            } else {
+                                cards[main].push([args.splice(2).join(" "), "img", "", 0, 1, 0, ""]);
+                                type = "img"
+                                channel.send("Imagen agregada al comando `" + main + "`")
+                            }
+                            wasFound = true;
+                            break
+                        }
+                    }
+                    if (!wasFound) {
+                        if (args[2].includes("tenor") && args[2].includes("gif") && !args[2].endsWith(".gif")) { 
 
-                        ApiFunctions.getGif(args[2], main, cards, users);
-                        channel.send("Gif agregado al comando `" + main + "`")
+                            ApiFunctions.getGif(args[2], main, cards, users);
+                            channel.send("Gif agregado al comando `" + main + "`")
+                            return;
 
-                    } else if (args[2].endsWith(".gif")) {
+                        }else if (!isNaN(args[2])) {
 
-                        cards[main].push([args.splice(2).join(" "), "gif", "", 0, 1, 0, ""]);
-                        channel.send("Gif agregado al comando `" + main + "`")
+                            if (act > 3) { // adding gifs or images
 
-                    } else if (args[2].endsWith(".jpeg") || args[2].endsWith(".jpg") || args[2].endsWith(".png")) {
+                                let searchTerm = main;
+                                if (act > 4) { searchTerm = args.splice(4).join(" ") }
 
-                        cards[main].push([args.splice(2).join(" "), "img", "", 0, 1, 0, ""]);
-                        channel.send("Imagen agregada al comando `" + main + "`")
+                                if (args[3] == "img" || args[3] == "imgs") { // imgs
 
+                                    ApiFunctions.saveImgsToCards(args[2], searchTerm, channel, main, cards, users);
 
-                    } else if (!isNaN(args[2])) {
+                                } else if (args[3] == "gif" || args[3] == "gifs") { // gifs
 
-                        if (act > 3) { // adding gifs or images
+                                    ApiFunctions.saveGifsToCards(args[2], searchTerm, channel, main, cards, users);
 
-                            let searchTerm = main;
-                            if (act > 4) { searchTerm = args.splice(4).join(" ") }
+                                } else { channel.send("Uso correcto: leer `help cmd`") } 
+                                return;
+                            }
 
-                            if (args[3] == "img" || args[3] == "imgs") { // imgs
+                        } else { // plain text
 
-                                ApiFunctions.saveImgsToCards(args[2], searchTerm, channel, main, cards, users);
-
-                            } else if (args[3] == "gif" || args[3] == "gifs") { // gifs
-
-                                ApiFunctions.saveGifsToCards(args[2], searchTerm, channel, main, cards, users);
-
-                            } else { channel.send("Uso correcto: leer `help cmd`") } 
+                            toSave = args.splice(2).join(" ")
+                            type = "txt";
+                            channel.send("Texto agregado al comando `" + main + "`")
 
                         }
-
-                    } else { // plain text
-
-                        cards[main].push([args.splice(2).join(" "), "txt", "", 0, 1, 0, ""]);
-                        channel.send("Texto agregado al comando `" + main + "`")
-
                     }
+
+                    cards[main].push([toSave, type, "", 0, 1, 0, ""]);
 
                 } else { channel.send( "Uso correcto: leer `help cmd`") } // not enough args
 

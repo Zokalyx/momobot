@@ -94,6 +94,8 @@ const Texts = {
 
         new: [
             "**__Comandos nuevos:__**",
+            "Ahora no hace falta borrar el texto posterior a '.png' (por ejemplo) al agregar imágenes",
+            "Los comandos principales ahora pueden escribirse en mayúsculas también",
             "`wait` muestra los minutos restantes para obtener más acciones"
         ],
 
