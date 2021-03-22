@@ -207,7 +207,11 @@ const Cards = {
                 let ind = Aux.indexOfCorrectInsertion(cost, costs);
                 let name;
                 try { name = cache.members.get(card[2]).nickname } catch(e) { name = card[2] }
-                top.splice(ind, 0, `**${Aux.capFirst(c)} #${this.cFromO(index, cards[c])+1}:** Valor: $${card[3]} - Multiplicador: x${card[4]} - Dueño: ${name}`);
+                let extraName = ""
+                if (card[5] != "") {
+                    extraName =  ` "${card[5]}"`
+                }
+                top.splice(ind, 0, `**${Aux.capFirst(c)} #${this.cFromO(index, cards[c])+1}${extraName}:** Valor: $${card[3]} - Multiplicador: x${card[4]} - Dueño: ${name}`);
                 costs.splice(ind, 0, cost);
             }
         }
