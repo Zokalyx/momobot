@@ -69,7 +69,7 @@ packInfoFromUser(id = undefined, users, cards, config, pack, cache = undefined, 
             return (
 
                 actualUserCollection.map( v => `**#${v+1} ${ ca[v][5]?`"${ca[v][5]}"`:"" }** - Valor: $${ca[v][3]} - Multiplicador: x${ca[v][4]}`).join("\n")
-                + `\n\n**Valor total:** $${total} - **Valor promedio:** $${avg}`
+                + `\n\n**Valor total:** $${total} - **Valor promedio:** $${avg} - ${ca[v][1]}`
 
             );
 
